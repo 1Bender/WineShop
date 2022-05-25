@@ -65,7 +65,7 @@ class RegionController {
 
         Region updatedRegion = repository.findById(id) //
                 .map(type -> {
-                    type.setName(newRegion.getName());
+                    type.setNameRegion(newRegion.getNameRegion());
 
                     return repository.save(type);
                 }) //

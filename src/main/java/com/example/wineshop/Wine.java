@@ -1,41 +1,38 @@
 package com.example.wineshop;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+/*@Table(name="wines_spa")*/
 public class Wine {
 
     private @Id @GeneratedValue Long id;
-    private Winery winery;
+    private @ManyToOne @JoinColumn(name = "winery") Winery winery;
     private int year;
-
     private float num_reviews;
 
-    private String country;
+    private @ManyToOne @JoinColumn(name = "region") Region region;
 
-    private Region region;
+    private double price;
 
-    private float price;
-
-    private Type type;
+    private @ManyToOne @JoinColumn(name = "type") Type type;
 
     private int body;
 
     private int acidity;
 
-    private float rating;
+    private double rating;
 
     private String name;
 
     public Wine() {}
 
-    public Wine(Winery winery, int year, float num_reviews, String country, Region region, float price, Type type, int body, int acidity,
+    public Wine(Winery winery, int year, float num_reviews, Region region, float price, Type type, int body, int acidity,
                 float rating, String name) {
         this.winery = winery;
         this.year = year;
         this.num_reviews = num_reviews;
-        this.country = country;
         this.region = region;
         this.price = price;
         this.type = type;
@@ -55,11 +52,11 @@ public class Wine {
         this.name = name;
     }
 
-    public float getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(float rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 
@@ -95,13 +92,6 @@ public class Wine {
         this.num_reviews = num_reviews;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public Region getRegion() {
         return region;
@@ -111,11 +101,11 @@ public class Wine {
         this.region = region;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -144,6 +134,7 @@ public class Wine {
     }
 
 
+
     @Override
     public boolean equals(Object o) {
 
@@ -152,21 +143,23 @@ public class Wine {
         if (!(o instanceof Wine))
             return false;
         Wine wine = (Wine) o;
-        return Objects.equals(this.getId(), wine.getId()) && Objects.equals(this.winery, wine.winery)
-                && Objects.equals(this.year, wine.year) && Objects.equals(this.region, wine.region)
-                && Objects.equals(this.price, wine.price) && Objects.equals(this.name, wine.name);
+        return  Double.compare(wine.price, price) == 0 && Double.compare(wine.rating, rating) == 0
+                && num_reviews == wine.num_reviews && winery == wine.winery && type == wine.type
+                && region == wine.region && id.equals(wine.id) && name.equals(wine.name)
+                && Objects.equals(year, wine.year) && Objects.equals(body, wine.body) && Objects.equals(acidity, wine.acidity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.winery, this.year, this.region, this.price, this.name);
+        return Objects.hash(this.id, this.winery, this.year, this.region, this.price, this.name, this.region,
+                this.acidity, this.body, this.num_reviews, this.rating);
     }
 
     @Override
     public String toString() {
-        return "Wine{" + "id=" + this.getId() + ", winery='" + this.winery + '\'' + ", year='" + this.year
-                + '\'' + ", rating='" + this.rating + '\'' + ", num_reviews='" + this.num_reviews +
-                ", country='" + this.country + '\'' + ", region='" + this.region + '\'' + ", price='"
+        return "Wine{" + "id=" + this.id + ", winery='" + this.winery + '\'' + ", year='" + this.year
+                + '\'' + ", rating='" + this.rating + '\'' + ", num_reviews='" + this.num_reviews
+                +'\'' + ", region='" + this.region + '\'' + ", price='"
                 + this.price + ", type='" + this.type + ", body='" + this.body + ", acidity='"
                 + this.acidity + '\''+ ", name='" + this.name + '}';
     }

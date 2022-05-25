@@ -1,12 +1,15 @@
 package com.example.wineshop;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Winery {
 
-    @Id @GeneratedValue private Long id;
+    private @Id @GeneratedValue Long id;
 
     private String name;
 
@@ -14,6 +17,8 @@ public class Winery {
         this.id = id;
         this.name = name;
     }
+
+
 
     public Long getId() {
         return id;

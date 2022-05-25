@@ -50,7 +50,7 @@ class WineryController {
     }
 
     /*Excepcion unica para todos OJO*/
-    @GetMapping("/region/{id}")
+    @GetMapping("/winery/{id}")
     EntityModel<Winery> one(@PathVariable Long id) {
 
         Winery winery = repository.findById(id) //

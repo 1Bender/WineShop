@@ -1,14 +1,15 @@
 package com.example.wineshop;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
+
+@Entity
 public class Region {
 
     private @Id @GeneratedValue Long id;
 
-    private String name;
+    private String nameRegion;
 
     private String country;
 
@@ -20,12 +21,12 @@ public class Region {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameRegion() {
+        return nameRegion;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameRegion(String nameRegion) {
+        this.nameRegion = nameRegion;
     }
 
     public String getCountry() {
@@ -44,17 +45,17 @@ public class Region {
         if (!(o instanceof Region))
             return false;
         Region region = (Region) o;
-        return Objects.equals(this.getId(), region.getId()) && Objects.equals(this.name, region.name)
+        return Objects.equals(this.getId(), region.getId()) && Objects.equals(this.nameRegion, region.nameRegion)
                 && Objects.equals(this.country, region.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.name, this.country);
+        return Objects.hash(this.getId(), this.nameRegion, this.country);
     }
 
     @Override
     public String toString() {
-        return "Region{" + "id=" + this.getId() + ", name='" + this.name + '\'' + ", country='" + this.country + '\'' +'}';
+        return "Region{" + "id=" + this.getId() + ", Región='" + this.nameRegion + '\'' + ", country='" + this.country + '\'' +'}';
     }
 }
