@@ -44,16 +44,16 @@ public class Type {
         if (!(o instanceof Type))
             return false;
         Type type = (Type) o;
-        return Objects.equals(this.getId(), type.getId()) && Objects.equals(this.name, type.name);
+        return Objects.equals(this.id, type.id) && Objects.equals(this.name, type.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.name);
+        return Objects.hash(this.id, this.name);
     }
 
     @Override
     public String toString() {
-        return "Type{" + "id=" + this.getId() + ", name='" + this.name + '\'' + '}';
+        return "Type{" + "id=" + this.id + ", name='" + this.name + '\'' + '}';
     }
 }

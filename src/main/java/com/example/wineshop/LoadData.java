@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class LoadData {
 
-    private static final Logger log = LoggerFactory.getLogger(LoadData.class);
+ /*   private static final Logger log = LoggerFactory.getLogger(LoadData.class);
 
     @Bean
     CommandLineRunner initDatabase(WineRepository wineRepository, RegionRepository regionRepository,
@@ -26,7 +26,7 @@ class LoadData {
 
 
         };
-    }
+    }*/
 
 }
 

@@ -30,19 +30,7 @@ public class Wine {
 
     public Wine() {}
 
-    /**
-     *
-     * @param winery
-     * @param year
-     * @param num_reviews
-     * @param region
-     * @param price
-     * @param type
-     * @param body
-     * @param acidity
-     * @param rating
-     * @param name
-     */
+
     public Wine(Winery winery, int year, double num_reviews, Region region, double price, Type type, int body, int acidity,
                 double rating, String name) {
         this.winery = winery;

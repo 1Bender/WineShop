@@ -46,17 +46,17 @@ public class Winery {
         if (!(o instanceof Winery))
             return false;
         Winery winery = (Winery) o;
-        return Objects.equals(this.getId(), winery.getId()) && Objects.equals(this.name, winery.name);
+        return Objects.equals(this.id, winery.id) && Objects.equals(this.name, winery.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.name);
+        return Objects.hash(this.id, this.name);
     }
 
     @Override
     public String toString() {
-        return "Winery{" + "id=" + this.getId() + ", name='" + this.name + '\'' + '}';
+        return "Winery{" + "id=" + this.id + ", name='" + this.name + '\'' + '}';
     }
 
 

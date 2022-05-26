@@ -55,17 +55,17 @@ public class Region {
         if (!(o instanceof Region))
             return false;
         Region region = (Region) o;
-        return Objects.equals(this.getId(), region.getId()) && Objects.equals(this.nameRegion, region.nameRegion)
+        return Objects.equals(this.id, region.id) && Objects.equals(this.nameRegion, region.nameRegion)
                 && Objects.equals(this.country, region.country);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.nameRegion, this.country);
+        return Objects.hash(this.id, this.nameRegion, this.country);
     }
 
     @Override
     public String toString() {
-        return "Region{" + "id=" + this.getId() + ", Región='" + this.nameRegion + '\'' + ", country='" + this.country + '\'' +'}';
+        return "Region{" + "id=" + this.id + ", Región='" + this.nameRegion + '\'' + ", country='" + this.country + '\'' +'}';
     }
 }
