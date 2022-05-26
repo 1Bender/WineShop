@@ -12,6 +12,14 @@ public class Type {
 
     private String name;
 
+    public Type(String name) {
+        this.name = name;
+    }
+
+    public Type() {
+
+    }
+
     public Long getId() {
         return id;
     }

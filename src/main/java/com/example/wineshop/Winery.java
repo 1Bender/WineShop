@@ -13,11 +13,13 @@ public class Winery {
 
     private String name;
 
-    public Winery(Long id, String name) {
-        this.id = id;
+    public Winery(String name) {
         this.name = name;
     }
 
+    public Winery() {
+
+    }
 
 
     public Long getId() {

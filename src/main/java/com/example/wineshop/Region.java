@@ -13,6 +13,16 @@ public class Region {
 
     private String country;
 
+    public Region(String nameRegion, String country) {
+        this.nameRegion = nameRegion;
+        this.country = country;
+    }
+
+    public Region() {
+
+    }
+
+
     public Long getId() {
         return id;
     }

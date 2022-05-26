@@ -1,16 +1,18 @@
 package com.example.wineshop;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-/*@Table(name="wines_spa")*/
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Wine {
 
     private @Id @GeneratedValue Long id;
     private @ManyToOne @JoinColumn(name = "winery") Winery winery;
     private int year;
-    private float num_reviews;
+    private double num_reviews;
 
     private @ManyToOne @JoinColumn(name = "region") Region region;
 
@@ -28,8 +30,21 @@ public class Wine {
 
     public Wine() {}
 
-    public Wine(Winery winery, int year, float num_reviews, Region region, float price, Type type, int body, int acidity,
-                float rating, String name) {
+    /**
+     *
+     * @param winery
+     * @param year
+     * @param num_reviews
+     * @param region
+     * @param price
+     * @param type
+     * @param body
+     * @param acidity
+     * @param rating
+     * @param name
+     */
+    public Wine(Winery winery, int year, double num_reviews, Region region, double price, Type type, int body, int acidity,
+                double rating, String name) {
         this.winery = winery;
         this.year = year;
         this.num_reviews = num_reviews;
@@ -84,11 +99,11 @@ public class Wine {
         this.year = year;
     }
 
-    public float getNum_reviews() {
+    public double getNum_reviews() {
         return num_reviews;
     }
 
-    public void setNum_reviews(float num_reviews) {
+    public void setNum_reviews(double num_reviews) {
         this.num_reviews = num_reviews;
     }
 
