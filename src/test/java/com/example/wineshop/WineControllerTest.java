@@ -24,17 +24,58 @@ class WineControllerTest {
     }
 
     @Test
+    void newWine() {
+    }
+
+    @Test
+    /**
+     * Verificamos ok y datos recibidos.
+     */
     void all() {
         webTestClient.get()
                 .uri("/wine")
                 .exchange()
                 .expectStatus().isOk()
-                .expectHeader().valueEquals("Content-Type","application/json")
-                .expectBody()
-                .jsonPath("$.length()").isEqualTo(2);
+                .expectHeader().valueEquals("Content-Type","application/hal+json");
     }
 
     @Test
     void one() {
+        webTestClient.get()
+                .uri("/wine/42")
+                .exchange()
+                .expectBody()
+                .jsonPath("$.name")
+                .isEqualTo("Pasión");
+    }
+
+    @Test
+    void createWine() {
+
+        Wine vino = new Wine();
+        webTestClient.post()
+                .uri("/wine")
+                .bodyValue(vino)
+                .exchange()
+                .expectStatus()
+                .isCreated();
+
+
+    }
+
+    @Test
+    void deleteWine() {
+        webTestClient.delete()
+                .uri("/wine/70")
+                .exchange()
+                .expectStatus().isEqualTo(204);
+    }
+
+    @Test
+    void wineNotFound(){
+        webTestClient.get()
+                .uri("/wine/751")
+                .exchange()
+                .expectStatus().isNotFound();
     }
 }

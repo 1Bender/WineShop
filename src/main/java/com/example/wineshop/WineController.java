@@ -26,7 +26,10 @@ class WineController {
     }
 
 
-
+    @GetMapping("/")
+    public String index() {
+        return "¡Acceso concedido!";
+    }
 
     @PostMapping("/wine")
     ResponseEntity<?> newWine(@RequestBody Wine newWine) {
